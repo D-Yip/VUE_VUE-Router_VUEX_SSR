@@ -1,6 +1,5 @@
 const path = require('path')
-// eslint-disable-next-line camelcase
-const HTML_Plugin = require('html-webpack-plugin')
+const HTMLPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const ExtractPlugin = require('extract-text-webpack-plugin')
@@ -16,7 +15,7 @@ const defaultPlugins = [
       NODE_ENV: isDev ? '"development"' : '"prodution"'
     }
   }),
-  new HTML_Plugin(),
+  new HTMLPlugin(),
   new VueLoaderPlugin()
 ]
 
