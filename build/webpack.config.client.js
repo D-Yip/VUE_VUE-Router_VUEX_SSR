@@ -44,15 +44,13 @@ if (isDev) {
     },
     devServer,
     plugins: defaultPlugins.concat([
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoEmitOnErrorsPlugin()
+      new webpack.HotModuleReplacementPlugin()
     ])
   })
 } else {
   config = merge(baseConfig, {
     entry: {
-      app: path.join(__dirname, '../src/index.js'),
-      vendor: ['vue']
+      app: path.join(__dirname, '../src/index.js')
     },
     output: {
       filename: '[name].[chunkhash:8].js'
@@ -71,25 +69,9 @@ if (isDev) {
     ]),
     optimization: {
       splitChunks: {
-        chunks: 'async',
-        minSize: 30000,
-        minChunks: 1,
-        maxAsyncRequests: 5,
-        maxInitialRequests: 3,
-        automaticNameDelimiter: '~',
-        name: true,
-        cacheGroups: {
-          vendors: {
-            test: /[\\/]node_modules[\\/]/,
-            priority: -10
-          },
-          default: {
-            minChunks: 2,
-            priority: -20,
-            reuseExistingChunk: true
-          }
-        }
-      }
+        chunks: 'all'
+      },
+      runtimeChunk: true
     }
   })
 }
