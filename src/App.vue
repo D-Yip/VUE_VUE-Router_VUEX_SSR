@@ -2,12 +2,17 @@
   <div id="app">
     <div id="cover" />
     <Header />
+    <p>{{ fullName }} {{ counter }}</p>
     <router-view />
     <Footer />
   </div>
 </template>
 
 <script>
+import {
+  mapState,
+  mapGetters
+} from 'vuex'
 import Header from './layout/header.vue'
 import Footer from './layout/footer.jsx'
 export default {
@@ -16,9 +21,11 @@ export default {
     Footer
   },
   computed: {
-    count () {
-      return this.$store.state.count
-    }
+    // ...mapState(['count']),
+    ...mapState({
+      counter: (state) => state.count
+    }),
+    ...mapGetters(['fullName'])
   },
   mounted () {
     console.log(this.$store)
