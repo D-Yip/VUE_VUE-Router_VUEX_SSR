@@ -14,6 +14,18 @@ export default {
   components: {
     Header,
     Footer
+  },
+  computed: {
+    count () {
+      return this.$store.state.count
+    }
+  },
+  mounted () {
+    console.log(this.$store)
+    // let i = 1
+    // setInterval(() => {
+    //   this.$store.commit('updateCount', i++)
+    // }, 1000)
   }
 }
 </script>
